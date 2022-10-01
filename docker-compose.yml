@@ -1,8 +1,8 @@
 version: "3.8"
 
 services:
-  mariadb:
-    container_name: mariadb
+  mariadb-standalone:
+    container_name: mariadb-standalone
     image: docker.io/bitnami/mariadb:10.9-debian-11
     env_file:
       - .env
