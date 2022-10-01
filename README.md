@@ -64,9 +64,9 @@ cd -
 chown 1001:1001 data backup
 ```
 
-### 5. Copy my_custom.cnf (Optional)
+### 5. Copy my_custom.cnf (Optional) (enable ssl)
 ```bash
-cp example/conf/custom.cnf conf
+cp example/conf/my_custom.cnf conf
 ```
 
 ### 6. Run Docker
@@ -76,7 +76,7 @@ docker-compose up -d
 
 ### 7. Enable ssl for user root
 ```
-docker exec -it mariadb bash
+docker exec -it mariadb-standalone bash
 mysql -u root -p$MARIADB_ROOT_PASSWORD -e "SHOW VARIABLES LIKE '%ssl%'";
 mysql -u root -p$MARIADB_ROOT_PASSWORD -e "ALTER USER 'root'@'%' REQUIRE SSL; ";
 mysql -u root -p$MARIADB_ROOT_PASSWORD -e "SELECT host, user, ssl_type FROM mysql.user";
@@ -85,7 +85,7 @@ exit
 ```
 ### 8. Test Exec
 ```
-docker exec -it mariadb bash
+docker exec -it mariadb-standalone bash
 mysql -u root -p$MARIADB_ROOT_PASSWORD
 show databases;
 quit;
