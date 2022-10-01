@@ -13,7 +13,7 @@ services:
       timeout: 5s
       retries: 6
     volumes:
-      - ./conf/custom.cnf:/opt/bitnami/mariadb/conf/custom.cnf:ro
+      - ./conf/my_custom.cnf:/opt/bitnami/mariadb/conf/my_custom.cnf:ro
       - ${MARIADB_CERTS_DIR}:/bitnami/cert:ro
       - ./data:/bitnami/mariadb:rw
       - ./backup:/bitnami/mariabackup:rw
