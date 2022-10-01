@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: docker.io/bitnami/mariadb:10.9-debian-11
+    env_file:
+      - .env
+    restart: always
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    volumes:
+      - ./conf/custom.cnf:/opt/bitnami/mariadb/conf/custom.cnf:ro
+      - ${MARIADB_CERTS_DIR}:/bitnami/cert:ro
+      - ./data:/bitnami/mariadb:rw
+      - ./backup:/bitnami/mariabackup:rw
+    network_mode: host
