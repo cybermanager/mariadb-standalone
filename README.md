@@ -81,6 +81,7 @@ mysql -u root -p$MARIADB_ROOT_PASSWORD -e "SHOW VARIABLES LIKE '%ssl%'";
 mysql -u root -p$MARIADB_ROOT_PASSWORD -e "ALTER USER 'root'@'%' REQUIRE SSL; ";
 mysql -u root -p$MARIADB_ROOT_PASSWORD -e "SELECT host, user, ssl_type FROM mysql.user";
 mysql -u root -p$MARIADB_ROOT_PASSWORD -e "SHOW CREATE USER 'root'";
+mysql -u root -p$MARIADB_ROOT_PASSWORD -e "status"|grep -i 'cipher'
 exit
 ```
 ### 8. Test Exec
